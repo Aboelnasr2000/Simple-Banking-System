@@ -106,12 +106,13 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 
-
-    <div class="container">
-        <div class="headers-1">
-            <h1>Transactions</h1>
-        </div>
-        <?php
+    <div class="content-wrapper-2" style="padding-top: 100px; padding-left: 75px;">
+        <div class="text-wrapper">
+            <div class="container">
+                <div class="headers-1">
+                    <h1>Transactions</h1>
+                </div>
+                <?php
         
         $sid = $_GET['Id'];
         $sql = "SELECT * FROM  Users WHERE Id = $sid";
@@ -121,45 +122,45 @@ if (isset($_POST['submit'])) {
         }
         $rows = mysqli_fetch_assoc($result);
         ?>
-        <form method="post" name="tcredit" class="tabletext"><br>
-            <div class="row">
-                <div class="col">
-                    <div class="table-responsive-sm">
-                        <table class="table table-hover table-sm table-striped table-condensed table-bordered"
-                            style="border-color:black;">
-                            <thead style="color : black;">
-                                <tr class="headers">
-                                    <th scope="col" class="text-center py-2">Id</th>
-                                    <th scope="col" class="text-center py-2">Name</th>
-                                    <th scope="col" class="text-center py-2">Email</th>
-                                    <th scope="col" class="text-center py-2">Balance</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                <form method="post" name="tcredit" class="tabletext"><br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-responsive-sm">
+                                <table class="table table-hover table-sm table-striped table-condensed table-bordered"
+                                    style="border-color:black;">
+                                    <thead style="color : black;">
+                                        <tr class="headers">
+                                            <th style="color : black;" scope="col" class="text-center py-2">Id</th>
+                                            <th style="color : black;" scope="col" class="text-center py-2">Name</th>
+                                            <th style="color : black;" scope="col" class="text-center py-2">Email</th>
+                                            <th style="color : black;" scope="col" class="text-center py-2">Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                                <tr style="color: azure;
+                                        <tr style="color: black;
                                     font-family: 'Signika', sans-serif;
                                     font-size: 22;">
-                                    <td class="py-2"><?php echo $rows['ID'] ?></td>
-                                    <td class="py-2"><?php echo $rows['Name'] ?></td>
-                                    <td class="py-2"><?php echo $rows['Email'] ?></td>
-                                    <td class="py-2"><?php echo $rows['Balance'] ?></td>
+                                            <td class="py-2"><?php echo $rows['ID'] ?></td>
+                                            <td class="py-2"><?php echo $rows['Name'] ?></td>
+                                            <td class="py-2"><?php echo $rows['Email'] ?></td>
+                                            <td class="py-2"><?php echo $rows['Balance'] ?></td>
 
-                                </tr>
+                                        </tr>
 
 
-                            </tbody>
-                        </table>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <br><br><br>
-            <div class="headers">
-                <label><b>Transfer To:</b></label>
-            </div>
-            <select name="to" class="cust-select" required>
-                <option value="" style="color: black;">Select Receiver</option>
-                <?php
+                    <br><br><br>
+                    <div class="headers">
+                        <label><b>Transfer To:</b></label>
+                    </div>
+                    <select name="to" class="cust-select" required>
+                        <option value="" style="color: black;">Select Receiver</option>
+                        <?php
                 include 'Config.php';
                 $sid = $_GET['Id'];
                 $sql = "SELECT * FROM Users WHERE ID != $sid";
@@ -169,29 +170,31 @@ if (isset($_POST['submit'])) {
                 }
                 while ($rows = mysqli_fetch_assoc($result)) {
                 ?>
-                <option style="color: black;" class="table" value="<?php echo $rows['ID']; ?>">
+                        <option style="color: black;" class="table" value="<?php echo $rows['ID']; ?>">
 
-                    <?php echo $rows['Email']; ?>
-                    (Balance:
-                    <?php echo $rows['Balance']; ?> )
+                            <?php echo $rows['Email']; ?>
+                            (Balance:
+                            <?php echo $rows['Balance']; ?> )
 
-                </option>
-                <?php
+                        </option>
+                        <?php
                 }
                 ?>
-                <div>
-            </select>
-            <br>
-            <br>
-            <div class="headers">
-                <label"><b>Amount:</b></label>
+                        <div>
+                    </select>
+                    <br>
+                    <br>
+                    <div class="headers">
+                        <label"><b>Amount:</b></label>
+                    </div>
+                    <input type="number" class="cust-select" name="amount" required>
+                    <br><br>
+                    <div class="text-center">
+                        <button name="submit" type="submit" id="myBtn">Transfer</button>
+                    </div>
+                </form>
             </div>
-            <input type="number" class="cust-select" name="amount" required>
-            <br><br>
-            <div class="text-center">
-                <button name="submit" type="submit" id="myBtn">Transfer</button>
-            </div>
-        </form>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
@@ -200,13 +203,13 @@ if (isset($_POST['submit'])) {
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
 
-<footer class="footerr-2">
-            Online Banking
-            <br>
-            Internship of The Sparks Foundation.
-            <br>
-            Aly Aboelnasr
-        </footer>
+    <footer class="footerr-2">
+        Online Banking
+        <br>
+        Internship of The Sparks Foundation.
+        <br>
+        Aly Aboelnasr
+    </footer>
 
 </body>
 
